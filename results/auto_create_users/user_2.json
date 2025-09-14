@@ -1,0 +1,46 @@
+{
+  "full_name": "Carlos Eduardo Rocha",
+  "password": "senhateste",
+  "email": "carlos.rocha@email.com",
+  "birthdate": "1978-11-02",
+  "biological_sex": "Male",
+  "weight": 95.2,
+  "ancestry": "Latin",
+  "medical_record": {
+    "conditions": [
+      {
+        "condition_name": "Hipertensão Arterial",
+        "diagnosis_date": "2018-03-12",
+        "condition_status": "Monitored"
+      },
+      {
+        "condition_name": "Doença do Refluxo Gastroesofágico (DRGE)",
+        "diagnosis_date": "2020-06-01",
+        "condition_status": "Active"
+      }
+    ],
+    "allergies": [],
+    "medications": [
+      {
+        "medication_name": "Losartana Potássica",
+        "dosage": "50mg",
+        "frequency": "Uma vez ao dia",
+        "treatment_start_date": "2018-03-15"
+      },
+      {
+        "medication_name": "Omeprazol",
+        "dosage": "20mg",
+        "frequency": "Em jejum, pela manhã",
+        "treatment_start_date": "2020-06-01"
+      }
+    ],
+    "injuries": [],
+    "family_histories": [
+      {
+        "relationship_to_patient": "Pai",
+        "medical_condition": "Doença cardíaca"
+      }
+    ],
+    "free_user_text": "Realizei apendicectomia em 2001. gosto de comidas gordurosas"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "full_name": "Lucas Almeida",
+  "password": "senhateste",
+  "email": "lucas.almeida@email.com",
+  "birthdate": "1997-03-10",
+  "biological_sex": "Male",
+  "weight": 78.5,
+  "ancestry": "Latin",
+  "medical_record": {
+    "conditions": [
+      {
+        "condition_name": "Transtorno de Ansiedade Generalizada (TAG)",
+        "diagnosis_date": "2024-08-05",
+        "condition_status": "Active"
+      }
+    ],
+    "allergies": [],
+    "medications": [
+      {
+        "medication_name": "Sertralina",
+        "dosage": "100mg",
+        "frequency": "Uma vez ao dia, pela manhã",
+        "treatment_start_date": "2024-08-10"
+      }
+    ],
+    "injuries": [],
+    "family_histories": [
+      {
+        "relationship_to_patient": "Pai",
+        "medical_condition": "Hipertensão"
+      }
+    ],
+    "free_user_text": "iniciei tratamento para ansiedade há cerca de um ano. Teve uma consulta de acompanhamento na semana passada e o médico aumentou a dose da Sertralina de 50mg para 100mg há três dias, pois os sintomas de ansiedade não estavam totalmente controlados."
+  }
+}

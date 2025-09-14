@@ -1,0 +1,41 @@
+{
+  "full_name": "Juliana Pereira Costa",
+  "password": "senhateste",
+  "email": "juliana.costa@email.com",
+  "birthdate": "1995-05-15",
+  "biological_sex": "Female",
+  "weight": 64.0,
+  "ancestry": "White",
+  "medical_record": {
+    "conditions": [
+      {
+        "condition_name": "Rinite Alérgica",
+        "diagnosis_date": "2010-08-20",
+        "condition_status": "Active"
+      }
+    ],
+    "allergies": [
+      {
+        "substance": "Pólen",
+        "reaction_type": "Espirros e coriza",
+        "discovery_date": "2010-08-20"
+      }
+    ],
+    "medications": [
+      {
+        "medication_name": "Loratadina",
+        "dosage": "10mg",
+        "frequency": "Quando necessário para sintomas de alergia",
+        "treatment_start_date": "2020-01-10"
+      }
+    ],
+    "injuries": [],
+    "family_histories": [
+      {
+        "relationship_to_patient": "Mãe",
+        "medical_condition": "Enxaqueca Crônica"
+      }
+    ],
+    "free_user_text": "Tenho estresse frequente devido à carga de trabalho e estudos. Ocasionalmente, tenho dores de cabeça leves que resolvem com analgésicos comuns."
+  }
+}
