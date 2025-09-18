@@ -14,8 +14,8 @@ Login de Usuário: Permite o acesso seguro à interface de conversação mediant
 
 ### Backend:
 
-Linguagem de Programação: ![Python](https://img.shields.io/badge/-Python-000?&logo=Python)
-Framework: ![FastAPi](https://img.shields.io/badge/-Python-000?&logo=FastApi)\
+Linguagem de Programação: ![Python](https://img.shields.io/badge/-Python-000?&logo=Python)\
+Framework: ![FastAPi](https://img.shields.io/badge/-FastApi-000?&logo=FastApi)\
 ORM: ![SqlAlchemy](https://img.shields.io/badge/-SqlAlchemy-000?&logo=SqlAlchemy)\
 Validação de Dados: ![Pydantic](https://img.shields.io/badge/-Pydantic-000?&logo=Pydantic)\
 Migrações no banco de dados: ![Alembic](https://img.shields.io/badge/-Alembic-000?&logo=Alembic)\
@@ -40,7 +40,7 @@ Sistema Operacional: ![Arch Linux](https://img.shields.io/badge/-Arch%20Linux-00
 ## Arquitetura do Software
 
 O sistema é composto por um backend desenvolvido em Python com FastAPI e um frontend em Streamlit. O backend gerencia toda a lógica de negócio, incluindo o CRUD de pacientes e a interação com o agente de IA, que utiliza o Gemini 2.5 Pro para analisar os sintomas e o histórico do usuário. A comunicação entre o frontend e o backend é realizada de forma segura através de uma API RESTful com autenticação JWT. O banco de dados PostgreSQL armazena as informações dos usuários, e todo o ambiente é conteinerizado com Docker.
-![Arquitetura](./images/architecture.png)
+![Arquitetura](./assets/architecture.png)
 
 ### Como Executar o Projeto
 Para reproduzir o ambiente, é necessário ter o Docker e o Docker Compose instalados.
@@ -71,6 +71,8 @@ No diretório frontend, execute o comando:
 ```
 docker-compose up -d --build
 ```
+
+(Sempre execute primeiro o backend, já que ele cria um network utilizado no frontend)
 
 ## ✅ Resultados e Validação
 O protótipo foi validado com sucesso em três cenários fictícios e um caso de uso real, demonstrando bons resultados em identificar corretamente as possíveis patologias em cenários simples e o especialista adequado a ser procurado.
