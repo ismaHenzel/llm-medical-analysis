@@ -2,7 +2,7 @@ services:
   # =-=-=-=-= POSTGRES =-=-=-=-= 
   # compose from: https://github.com/khezen/compose-postgres/blob/master/docker-compose.yml
   postgres:
-    container_name: postgres_container
+    container_name: medical-llm-fastapi-postgres
     image: postgres:14.18
     environment:
       POSTGRES_USER: ${POSTGRES_USER:-postgres}
@@ -18,7 +18,7 @@ services:
     restart: unless-stopped
 
   pgadmin:
-    container_name: pgadmin_container
+    container_name: medical-llm-fastapi-pgadmin
     image: dpage/pgadmin4
     environment:
       PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-pgadmin4@pgadmin.org}
@@ -31,11 +31,12 @@ services:
       - "${PGADMIN_PORT:-5050}:80"
     networks:
       - postgres
+
     restart: unless-stopped
 
   # =-=-=-=-= FastApi =-=-=-=-= 
   fastapi:
-    container_name: fastapi
+    container_name: medical-llm-fastapi
     env_file: 
       - .env
     build:
@@ -51,6 +52,7 @@ services:
 
     networks:
       - postgres
+      - fastapi
 
     depends_on:
       - postgres
@@ -58,6 +60,8 @@ services:
 networks:
   postgres:
     driver: bridge
+  fastapi:
+    name: backend_fastapi
 
 volumes:
     postgres:

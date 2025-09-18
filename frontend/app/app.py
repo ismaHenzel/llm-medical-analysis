@@ -5,7 +5,7 @@ import requests
 import streamlit as st
 from utils import create_header
 
-BACKEND_URL = "http://localhost:8080"
+BACKEND_URL = "http://fastapi:8080"
 
 def login_form():
     """

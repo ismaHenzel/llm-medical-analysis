@@ -6,7 +6,7 @@ from utils import (create_header, local_storage_get, local_storage_set,
                    validate_token)
 
 # --- Configuration ---
-BACKEND_URL = "http://localhost:8080"
+BACKEND_URL = "http://fastapi:8080"
 
 st.set_page_config(page_title="Assistente Médico", page_icon="🩺")
 create_header(header_text="")

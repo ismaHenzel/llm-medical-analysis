@@ -8,7 +8,7 @@ sys.path.append("../")
 from utils import create_header
 
 # --- CONFIGURAÇÃO DA API ---
-API_URL = "http://localhost:8080"
+API_URL = "http://fastapi:8080"
 
 # --- MAPEAMENTO DE VALORES PARA ENUMS DO BACKEND ---
 # Mapeia as opções da UI para os valores que o backend espera

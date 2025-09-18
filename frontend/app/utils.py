@@ -5,7 +5,8 @@ import requests
 import streamlit as st
 from streamlit_javascript import st_javascript
 
-BACKEND_URL = "http://localhost:8080"
+BACKEND_URL = "http://fastapi:8080"
+
 def create_header(header_text=None):
 
     with open('./default.css') as f:

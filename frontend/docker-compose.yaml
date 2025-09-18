@@ -1,0 +1,17 @@
+services:
+  # =-=-=-=-= FastApi =-=-=-=-= 
+  streamlit:
+    container_name: medical-llm-streamlit
+    build:
+      context: .
+      dockerfile: ./Dockerfile.yaml
+    ports:
+      - 8501:8501
+    volumes:
+      - ./app:/code/app
+    networks:
+      - backend_fastapi
+
+networks:
+  backend_fastapi:
+    external: true
