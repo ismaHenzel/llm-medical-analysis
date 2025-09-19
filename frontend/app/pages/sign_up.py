@@ -1,5 +1,7 @@
+import os
 import sys
 from datetime import date
+from time import sleep
 
 import requests
 import streamlit as st
@@ -8,7 +10,7 @@ sys.path.append("../")
 from utils import create_header
 
 # --- CONFIGURAÇÃO DA API ---
-API_URL = "http://fastapi:8080"
+BACKEND_URL = os.environ["BACKEND_URL"]
 
 # --- MAPEAMENTO DE VALORES PARA ENUMS DO BACKEND ---
 # Mapeia as opções da UI para os valores que o backend espera
@@ -141,7 +143,7 @@ def create_patient():
     }
 
     try:
-        response = requests.post(f"{API_URL}/patients/", json=patient_payload)
+        response = requests.post(f"{BACKEND_URL}/patients/", json=patient_payload)
 
         if response.status_code == 201: 
             st.session_state["account_created"] = True
@@ -221,5 +223,5 @@ if st.button("Criar Conta", type="primary", on_click=create_patient, use_contain
     if st.session_state["account_created"] == True:
         st.success("Conta criada com sucesso! Você já pode fazer o login.")
         st.balloons()
+        sleep(1.5) # wait showing animation
         st.switch_page("./app.py") # redirects to login page
-

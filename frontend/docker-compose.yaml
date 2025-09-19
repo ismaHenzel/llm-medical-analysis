@@ -1,5 +1,4 @@
 services:
-  # =-=-=-=-= FastApi =-=-=-=-= 
   streamlit:
     container_name: medical-llm-streamlit
     build:
@@ -11,6 +10,8 @@ services:
       - ./app:/code/app
     networks:
       - backend_fastapi
+    environment:
+      - BACKEND_URL=http://fastapi:8080
 
 networks:
   backend_fastapi:

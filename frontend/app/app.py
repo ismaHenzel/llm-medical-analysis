@@ -1,3 +1,4 @@
+import os
 import json
 from http import HTTPStatus
 
@@ -5,7 +6,7 @@ import requests
 import streamlit as st
 from utils import create_header
 
-BACKEND_URL = "http://fastapi:8080"
+BACKEND_URL = os.environ["BACKEND_URL"]
 
 def login_form():
     """
@@ -42,7 +43,7 @@ def login_form():
                     st.session_state["logged_in"] = True
                     st.session_state["token"] = token_data['access_token']
                     st.switch_page("./pages/chat.py")
-                    st.rerun()
+
                 elif response.status_code == HTTPStatus.UNAUTHORIZED:
                     st.error("Email ou senha incorretos.")
                 else:
@@ -51,11 +52,8 @@ def login_form():
             except requests.exceptions.ConnectionError:
                 st.error("Não foi possível conectar ao servidor. Verifique se o backend está em execução.")
 
-            ### <<< CHANGE END: API AUTHENTICATION LOGIC >>> ###
-
 # --- Main script execution flow ---
 st.set_page_config(page_title="Login", page_icon="🔒")
 
 create_header()
 login_form()
-

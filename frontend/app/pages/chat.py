@@ -1,15 +1,22 @@
 import os
+from time import sleep
 
 import requests
 import streamlit as st
-from utils import (create_header, local_storage_get, local_storage_set,
-                   validate_token)
+from utils import (
+    create_header, 
+    local_storage_get, 
+    local_storage_set,
+    local_storage_remove,
+    validate_token
+)
 
 # --- Configuration ---
-BACKEND_URL = "http://fastapi:8080"
+BACKEND_URL = os.environ["BACKEND_URL"]
 
 st.set_page_config(page_title="Assistente Médico", page_icon="🩺")
 create_header(header_text="")
+st.markdown("**Lembre-se: este assistente não substitui um médico verdadeiro.**")
 
 # --- Authentication Handling ---
 if st.session_state.get("token"):
@@ -18,8 +25,10 @@ else:
     st.session_state["token"] = local_storage_get("token", "token-get")
 
 validate_token()
+st.toast("Autenticação Validada", icon="✅")
 
 # --- API Communication Functions ---
+
 def get_chat_history(patient_id: int, token: str):
     """Fetches the chat history from the backend."""  
     headers = {"Authorization": f"Bearer {token}"}
@@ -48,19 +57,25 @@ def post_chat_message(thread_id: str, message: str, patient_record: dict, token:
         st.error(f"Error sending message: {error_detail}")
         return None
 
-# --- Streamlit UI and State Management ---
-st.markdown("**Lembre-se: este assistente não substitui um médico verdadeiro.**")
-
 # --- Sidebar Display ---
 with st.sidebar:
     st.header("Ficha Médica do Paciente")
     st.json(st.session_state.patient_data)
     st.info(" A inteligência artificial tem acesso a essa informação e ela será considerada nas análises ")
+    
+    if st.button(label="Sair da aplicação",icon="➡️",type="primary"):
+        st.toast("Saindo da Aplicação... ", icon="➡️")
 
-    st.page_link("app.py", label="Sair da aplicação", icon="➡️")
+        st.session_state.messages =  []
+        st.session_state.history_loaded = False
+        local_storage_remove("token")
 
-# --- Chat Initialization ---
-if "history_loaded" not in st.session_state:
+        sleep(1)
+
+        st.switch_page("./app.py")
+
+# --- State Initialization ---
+if not st.session_state.get("history_loaded"):
     patient_id = st.session_state.patient_data["id"]
     st.session_state.messages = get_chat_history(patient_id, st.session_state["token"])
     st.session_state.history_loaded = True

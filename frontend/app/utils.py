@@ -1,11 +1,13 @@
+import os
 import json
 from pathlib import Path
+from time import sleep
 
 import requests
 import streamlit as st
 from streamlit_javascript import st_javascript
 
-BACKEND_URL = "http://fastapi:8080"
+BACKEND_URL = os.environ["BACKEND_URL"]
 
 def create_header(header_text=None):
 
@@ -26,6 +28,9 @@ def local_storage_get(key, id):
 
 def local_storage_set(key, value):
     return st_javascript(f"localStorage.setItem('{key}','{value}');")
+
+def local_storage_remove(key):
+    st_javascript(f"localStorage.removeItem('{key}');")
 
 def validate_token():
     """
@@ -57,6 +62,7 @@ def validate_token():
         else:
             st.warning("Sua sessão expirou. Por favor, faça o login novamente.")
             st.page_link("app.py", label="Ir para a página de Login", icon="➡️")
+            local_storage_remove("token")
             st.stop()
             return
 
